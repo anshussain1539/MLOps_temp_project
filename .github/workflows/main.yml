@@ -22,11 +22,17 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
           registry: https://index.docker.io/v1/
 
-      - name: install dependencies
+      - name: install dependencies-1
         run: pip install pytest
+
+      - name: install dependencies-2
+        run: pip install flake8
 
       - name: Test with pytest
         run: pytest test.py
 
       - name: Build Docker image
-        run: docker buildx build -t anshussain1539/MLOps_project --push .
+        run: docker buildx build -t anshussain1539/mlops_project --push .
+
+      - name: Code quality
+        run: flake8 app.py
