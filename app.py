@@ -36,7 +36,7 @@ def predict():
         input_features = np.array([
             shop_id, item_id, date_block_num, item_category_id, Month, Year])
         # Make prediction
-        input_features = input_features.reshape(1,-1)
+        input_features = input_features.reshape(1, -1)
         prediction = model.predict(input_features)
         return render_template('index.html', prediction=prediction)
 
